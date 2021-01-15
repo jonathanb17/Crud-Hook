@@ -7,17 +7,19 @@ const CrudHook = () => {
     const [name, setName] = useState('')
     const [username, setUsername] = useState('')
 
+
     const usersData = [
-        { id: uuidv4(), name: 'Tania', username: 'floppydiskette' },
-        { id: uuidv4(), name: 'Craig', username: 'siliconeidolon' },
-        { id: uuidv4(), name: 'Ben', username: 'benisphere' },
+        { id: uuidv4(), name: 'Tania', username: 'aaaaa' },
+        { id: uuidv4(), name: 'Craig', username: 'bbbbb' },
+        { id: uuidv4(), name: 'Ben', username: 'ccccc' },
     ];
 
     const [usuario, setUsuario] = useState(usersData);
 
+    console.log(usuario);
+
     const handlSubmit = (e) => {
         e.preventDefault();
-
         setUsuario([...usuario, { name, username }]);
         console.log(name, username);
     }
@@ -27,6 +29,8 @@ const CrudHook = () => {
         setUsuario(usuario.filter(use => use.id !== id));
         console.log('user deleted..');
     }
+
+
 
     return (
         <div>
@@ -52,18 +56,15 @@ const CrudHook = () => {
             <hr />
             <div>
                 {
-                    usersData.map((use, i) => {
+                    usuario.map((use, i) => {
                         return (
-                            <div key={use.id}>
-                                <h1>
-                                    {i}-{use.name}-{use.username}
-                                    <button onClick={() => deleteUser(use.id)}>
-                                        X
-                                    </button>
-                                </h1>
-                            </div>
+                            <h1 key={use.id}>
+                                <h2>{i}-{use.name} - {use.username}
+                                    <button onClick={() => deleteUser(use.id)}>X</button></h2>
+                            </h1>
                         )
                     })
+
                 }
             </div>
         </div>
